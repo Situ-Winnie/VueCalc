@@ -421,11 +421,19 @@ export default {
       this.loadingProducts = true
       this.productError = null
       try {
+<<<<<<< HEAD
+=======
+        const token = sessionStorage.getItem('auth_token')
+        const headers = {
+          'Accept': 'application/json',
+        }
+        if (token && token !== 'session') {
+          headers['Authorization'] = `Bearer ${token}`
+        }
+>>>>>>> 17dcd977181aa43f5ad1855f35a9018410c00b7e
         const response = await axios.get('https://mwdev.pesapal.credit/api/merchant/loans/products', {
           timeout: 10000,
-          headers: {
-            'Accept': 'application/json',
-          }
+          headers,
         })
         // Handle various response structures
         const data = response.data
